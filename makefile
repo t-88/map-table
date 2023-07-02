@@ -1,3 +1,3 @@
 all:
-	gcc -Wall -g main.c  -o main
+	gcc -g main.c  -o main
 	./main
