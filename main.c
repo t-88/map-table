@@ -1,25 +1,36 @@
 #include <stdio.h>
 #include "ht_macro.h"
 
-
-#define NUM_OF_TEST_VALUES 1000
-
-
-
 int main(void) {
-    ht_table_int* table = ht_create_table_int();
-   	for (int i=0; i<NUM_OF_TEST_VALUES; ++i) {
-		char buff[4]; 
-        sprintf(buff, "%d", i);
-		ht_insert_int(table,buff , i);
+    ht_table_int* ti = ht_create_table_int();
+    for(int i = 0; i < 100;i++) {
+        char buff[4];
+        sprintf(buff,"%d",i);
+        ht_insert_int(ti,buff,i);
     }
-
-#if 0
-    ht_print_table(table);
-    printf("%d\n",table->count);
+    for(int i = 0; i < 100;i++) {
+        char buff[4];
+        sprintf(buff,"%d",i);
+        printf("key%d: %d\n",i,ht_get_int(ti,buff));
+    }
+    ht_free_table_int(ti);
     
-#endif
-    printf("%d",ht_get_int(table,"4"));
-    ht_free_table_int(table);
+    getchar();
+
+
+    ht_table_double* tf = ht_create_table_double();
+    for(int i = 0; i < 100;i++) {
+        char buff[4];
+        sprintf(buff,"%d",i);
+        ht_insert_double(tf,buff,(float)i/10.f);
+    }
+    for(int i = 0; i < 100;i++) {
+        char buff[4];
+        sprintf(buff,"%d",i);
+        printf("key%d: %f\n",i,ht_get_double(tf,buff));
+    }
+    ht_free_table_double(tf);
+
+
     return 0;
 } 

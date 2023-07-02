@@ -34,7 +34,6 @@ static uint fnv_1(const char* key) {
         hashed = hashed * FNV_prime_1;
         hashed = hashed ^ key[i];
         i++;
-
     }
     return hashed;
 }
@@ -48,7 +47,6 @@ static uint fnv_1a(const char* key) {
     }
     return hashed;
 }
-
 
 #define mk_ht(type,NAME_TOKEN) \
     \
@@ -144,7 +142,7 @@ static uint fnv_1a(const char* key) {
         } while(table->items[i] == &DEAD_ITEM_##NAME_TOKEN || strcmp(table->items[i]->key,key) != 0);\
         return table->items[i]->value;\
     }\
-    void ht_remove(ht_table_##NAME_TOKEN* table,const char* key) { \
+    void ht_remove__##NAME_TOKEN(ht_table_##NAME_TOKEN* table,const char* key) { \
         uint times = 0;\
         uint i = 0; \
         do {\
@@ -180,6 +178,9 @@ static uint fnv_1a(const char* key) {
 
 
 mk_ht(int,int);
+mk_ht(float,float);
+mk_ht(double,double);
+
 
 #undef FNV_offset   
 #undef FNV_prime_1  
