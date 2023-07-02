@@ -175,8 +175,6 @@ static uint fnv_1a(const char* key) {
         ht_free_table_##NAME_TOKEN(t);\
     }
 
-
-
 mk_ht(int,int);
 mk_ht(float,float);
 mk_ht(double,double);

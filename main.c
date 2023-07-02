@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "ht_macro.h"
+#include "ht.h"
 
 int main(void) {
     ht_table_int* ti = ht_create_table_int();
@@ -30,7 +31,15 @@ int main(void) {
         printf("key%d: %f\n",i,ht_get_double(tf,buff));
     }
     ht_free_table_double(tf);
-
-
+    
+    getchar();
+    ht_table_cstr* ts = ht_create_table_cstr();
+    for(int i = 0; i < 100;i++) {
+        char buff[4];
+        sprintf(buff,"%d",i);
+        ht_insert_cstr(ts,buff,buff);
+    }
+    ht_print_table_cstr(ts);
+    ht_free_table_cstr(ts);
     return 0;
 } 
