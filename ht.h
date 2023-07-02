@@ -50,11 +50,8 @@ static ht_item* ht_create_item(const char* key,const char* value) {
 
     ht_item* item = (ht_item*) malloc(sizeof(ht_item)); 
     
-    item->key   = (char*) malloc(sizeof(key));
-    item->value = (char*) malloc(sizeof(value));
-
-    strcpy(item->key,key);
-    strcpy(item->value,value);
+    item->key   = strdup(key);
+    item->value = strdup(value);
 
     return item;
 }
